@@ -1,0 +1,203 @@
+/* Throughout the the app same  */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: 0.3s all ease-in-out;
+    box-sizing: border-box;
+}
+
+.btn:hover {
+    background-color: rgb(0, 0, 112);
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #e8e8f3;
+    /* //opacity: 0.6; */
+    background-image: radial-gradient(#757bff 1px, #e8e8f3 1px);
+    background-size: 40px 40px;
+}
+
+:root {
+    --fs1: clamp(2.2rem, 3.5vw, 4rem);
+    --fs2: clamp(1.5rem, 2vw, 3rem);
+    --fs3: clamp(1.15rem, 1.5vw, 1.3rem);
+    --fs4: clamp(1rem, 1.8vw, 4rem);
+    --bColor: #000aca;
+    --blackColor: rgb(58, 58, 58);
+    --boorderRadius: 7px;
+}
+
+
+/* ----------------------------------------- */
+
+.mainHeadingQuizApp {
+    font-size: var(--fs1);
+    text-align: center;
+    color: var(--blackColor);
+    margin-top: 2rem;
+}
+
+.mainHeadingQuizApp span {
+    color: var(--bColor);
+}
+
+.outerContainer {
+    min-height: 40vh;
+    width: clamp(230px, 90vw, 500px);
+    margin: 2rem auto 0 auto;
+}
+
+.startingApp {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 8px 23px -7px grey;
+    min-height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+
+/* Main Menu COnatner Or Starting */
+
+.mainMenuContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateX(-100%);
+    transition-delay: 0.2s;
+}
+
+.innerContainerInputFields {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 2rem 0;
+}
+
+.startingApp input {
+    font-size: var(--fs3);
+    padding: 0.3rem 0.7rem;
+    border-radius: 5px;
+    text-align: center;
+    border: 2px solid --bColor;
+    outline: 2px solid --bColor;
+}
+
+.innerContainerInputFields label {
+    display: block;
+    margin: 0.5rem 0;
+    font-size: var(--fs3);
+    color: var(--bColor);
+    font-weight: 700;
+}
+
+
+/* Select Styling over here */
+
+.innerContainerInputFields select {
+    width: 70px;
+    padding: 0.3rem 0.5rem;
+    font-size: var(--fs3);
+    border-radius: var(--boorderRadius);
+}
+
+
+/* Btn Class button over here */
+
+.btnDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    overflow: hidden;
+}
+
+.btn {
+    background-color: var(--bColor);
+    color: white;
+    padding: 0.5rem 0.7rem;
+    width: 90px;
+    border: none;
+    outline: none;
+    font-size: var(--fs3);
+    border-radius: var(--boorderRadius);
+    display: block;
+    margin: 2rem 0;
+}
+
+#backBtn {
+    display: none;
+}
+
+
+/* Welcome Page Styling Over here */
+
+.welcome {
+    position: absolute;
+    padding: 0rem 1.5rem;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    transition-delay: 0.19s;
+}
+
+.welcome h1 {
+    font-size: var(--fs2);
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--blackColor);
+}
+
+.welcome p {
+    font-size: var(--fs3);
+    text-align: justify;
+    color: var(--blackColor);
+}
+
+
+/* steps */
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--fs3);
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+}
+
+.steps li {
+    height: calc(var(--fs2) + 5px);
+    width: calc(var(--fs2) + 5px);
+    background-color: #000aca;
+    text-align: center;
+    display: flex;
+    border: 2px solid transparent;
+    justify-content: center;
+    color: white;
+    border-radius: 50%;
+    align-items: center;
+}
+
+.steps .stepsUnfill {
+    background-color: white;
+    color: var(--bColor);
+    border: 2px solid var(--bColor);
+}

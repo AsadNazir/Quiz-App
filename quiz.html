@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <!-- CSS Links  -->
+    <link rel="stylesheet" href="./CSS/index.css">
+    <!-- Question CSS -->
+
+    <link rel="stylesheet" href="./CSS/quiz.css">
+    <!-- Fonts Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+
+</head>
+
+<body>
+    <h1 class="mainHeadingQuizApp"><span><i class="fa-brands fa-bilibili"></i></span> A's App</h1>
+    <div class="outerContainer">
+        <div class="innerContainer">
+            <div class="timer">
+                <span class="minutes">10</span>:<span class="seconds">00</span>
+            </div>
+            <div class="Quiz">
+                <h1>Questions 1 of 10</h1>
+                <div class="quizQuestionsStatement"></div>
+                <div class="options">
+                    <div class="quizOptionsDiv">
+                        <span class="optionNO">1.</span>
+                        <div class="quizOptionsText">Lorem ipsum dolor sit amet.
+                        </div>
+                    </div>
+                    <div class="quizOptionsDiv">
+                        <span class="optionNO">2.</span>
+                        <div class="quizOptionsText">Lorem ipsum dolor sit amet.
+                        </div>
+                    </div>
+                    <div class="quizOptionsDiv">
+                        <span class="optionNO">3.</span>
+                        <div class="quizOptionsText">Lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, hic. dolor sit amet.
+                        </div>
+                    </div>
+                    <div class="quizOptionsDiv">
+                        <span class="optionNO">4.</span>
+                        <div class="quizOptionsText">Lorem ipsum dolor sit amet.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="btnDiv">
+            <button class="btn" id="prevQ">Prev</button>
+            <button class="btn" id="nextQ">Next</button>
+        </div>
+
+    </div>
+    <script type="module" src="./modules/quiz.js"></script>
+    <!-- <script src="./modules/timer.js"></script> -->
+</body>
+
+</html>

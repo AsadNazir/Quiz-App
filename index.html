@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <!-- CSS Links  -->
+    <link rel="stylesheet" href="./CSS/index.css">
+    <!-- Question CSS -->
+    <link rel="stylesheet" href="./CSS/questions.css">
+    <!-- Fonts Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+
+</head>
+
+<body>
+    <h1 class="mainHeadingQuizApp"><span><i class="fa-brands fa-bilibili"></i></span> Quiz App</h1>
+    <div class="outerContainer">
+        <div class="innerContainer">
+            <ul class="steps">
+                <li class="stepsUnfill">1</li>
+                <li class="stepsUnfill">2</li>
+                <li class="stepsUnfill">3</li>
+            </ul>
+            <div class="startingApp" id="MainContForQuizApp">
+                <div class="mainMenuContainer">
+                    <div class="innerContainerInputFields">
+                        <label for="quizName">Title</label>
+                        <input type="text" name="" value="A's Quiz" id="quizName">
+                    </div>
+                    <div class="innerContainerInputFields">
+                        <label for="">Number of questions</label>
+                        <input type="number" name="" value="1" min="1" max="10" id="noOfQuestions">
+                    </div>
+                    <div class="innerContainerInputFields">
+                        <label for="options">Options</label>
+                        <select name="options" id="options">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                    </div>
+                    <div class="innerContainerInputFields">
+                        <label for="timer">timer</label>
+                        <input type="number" name="" value="1" min="1" max="10" id="timerMins">
+                        </select>
+                    </div>
+                </div>
+                <!-- Welcome Page Over Here -->
+                <div class="welcome">
+                    <h1>Welcome !</h1>
+                    <p>This is a small JS(java Script) base Quiz App designed by <a href="/">Asad</a>. You can enetr Question and thier options and it will create a quiz app for You that any one can solve. To begin click next</p>
+                </div>
+            </div>
+        </div>
+        <div class="btnDiv">
+            <button class="btn" id="backBtn">Back</button>
+            <button class="btn" id="nextBtn">Next</button>
+        </div>
+
+
+    </div>
+    <script type="module" src="./index.js">
+
+    </script>
+</body>
+
+</html>

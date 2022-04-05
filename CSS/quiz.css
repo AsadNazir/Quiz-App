@@ -1,0 +1,76 @@
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.Quiz {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 8px 23px -7px grey;
+    min-height: 20rem;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    padding: 1.5rem;
+    overflow: hidden;
+}
+
+.quizOptionsDiv {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    background-color: whitesmoke;
+    padding: 1rem;
+    border-radius: 7px;
+    font-size: var(--fs3);
+    border: 2px solid transparent;
+}
+
+.quizOptionsDiv:hover {
+    border: 2px solid var(--bColor);
+    cursor: pointer;
+}
+
+.quizOptionsDiv span {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
+    color: var(--bColor);
+    font-weight: 700;
+}
+
+.quizQuestionsStatement {
+    background-color: whitesmoke;
+    padding: 1rem;
+    font-size: var(--fs3);
+    border-radius: 7px;
+    margin-top: 1rem;
+    max-height: 15rem;
+    overflow-y: scroll;
+    scroll-padding: 1rem 0;
+}
+
+
+/* Timer section over here */
+
+.timer {
+    text-align: center;
+    font-size: var(--fs2);
+    margin-bottom: 1rem;
+    background-color: var(--bColor);
+    width: fit-content;
+    margin: 0 auto 1rem auto;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 7px;
+}
+
+
+/* When the Quiz Form is Over Submmit  */
+
+.over {
+    display: grid;
+    place-content: center;
+    font-size: var(--fs3);
+}
