@@ -60,6 +60,8 @@ function NewQuestion(statement, optArr, correctOpt) {
     this.correctOpt = correctOpt;
 }
 
+NewQuestion.prototype.markedOption=null;
+console.log(new NewQuestion("hi","hello","Something"));
 
 //  Next Q Function over here
 function nextQFunc() {
