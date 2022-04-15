@@ -9,11 +9,12 @@ export class timerClass
     #secCount;
     #interval;
     #stopInterval;
-    
+    #TimerMiutes
     constructor(time)
     {
         // The min assigned
         this.#minCount=time;
+        this.#TimerMiutes=time;
         this.#sec= document.querySelector(".seconds");
         this.#min= document.querySelector(".minutes");
         this.#currTime = new Date().getTime();
@@ -25,6 +26,7 @@ export class timerClass
 
     //Main Function that is going to be called Outside
     timerCounter() {
+        
         //setting Interval Over here
         this.#interval = this.#currTime;
         this.#interval += (this.#minCount * 60000) + (this.#secCount * 1000);
@@ -56,9 +58,13 @@ export class timerClass
 
             clearInterval(this.#stopInterval);
             quizOver("Times Up");
+            // Calling stop
+            this.stop();
+    
         }
         this.#interval -= 1000;
         this.#show();
+
     }
 
       // Show fucntion over here
@@ -67,4 +73,20 @@ export class timerClass
         this.#addZero(this.#sec, this.#secCount);   
     }
     
+    //Stop the clock and send back the recorded time
+    stop()
+    {
+        clearInterval(this.#stopInterval);
+        let timeLeft={
+            FinishdMinutes:this.#TimerMiutes-this.#minCount-1,
+            FinishdSeconds:60-this.#secCount
+        }
+        if(timeLeft.FinishdMinutes==-1)
+        {
+            timeLeft.FinishdMinutes=this.#TimerMiutes;
+            timeLeft.FinishdSeconds=0;
+        }
+     
+        localStorage.setItem("TimeLeft",JSON.stringify(timeLeft));
+    }
 }

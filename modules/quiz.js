@@ -10,7 +10,7 @@ localStorage.removeItem("timer");
 
 
 // getting the Qusetion and clearing the local storage
-const Qb = JSON.parse(localStorage.getItem("question"));
+let Qb = JSON.parse(localStorage.getItem("question"));
 localStorage.removeItem("question");
 
 //Flag for reloading
@@ -21,61 +21,68 @@ let cont = document.querySelector(".Quiz");
 
 //Shared Function by timer module and Quix CLass
 export function quizOver(message) {
+
+    //Changing the flag value to false
     insideTheQuizFlag = false;
+
+    // applying the styling to the cont/ Quiz Contianer
     cont.style.display = "grid";
     cont.style.placeContent = "center";
-    cont.innerHTML = `<h1>${message}<br>Quiz is Over !</h1> 
-    <button>Results</button>`;
+    cont.innerHTML = `<h1 class="over2">${message}<br>Quiz is Over !</h1> 
+    <a href="../results.html" class="btn" >Results</a>`;
+
+    // Removing the next and prev buttons
+    next.style.display='none';
+    prev.style.display='none';
+
+    // setting local storage
+    localStorage.setItem("status",JSON.stringify(message));
+    localStorage.setItem("results",JSON.stringify(Qb));
 }
 
-document.addEventListener("visibilitychange",handler);
 
-function handler()
-
-{
-    if(document.visibilityState==="hidden")
-    {
-        quizOver("You left the App !")
-    }
-}
 // Quiz Class OOP way
 class Quiz {
     
     //Private Members
-    #Qb;
     #count;
     #opt
     timerObj
 
-    constructor(quizObj) 
+    //Constructor Funcion
+    constructor() 
     {
         // getting the heading and setting
         const heading = JSON.parse(localStorage.getItem("heading"));
         let quizHeadEle=document.querySelector(".mainHeadingQuizApp");
+
         // getting the option
         this.#opt = JSON.parse(localStorage.getItem("option"));
 
         //assignment of values
         quizHeadEle.innerHTML = `<span><i class="fa-brands fa-bilibili"></i></span> ${heading}`;
-        this.#Qb = quizObj;
         this.#count=0;
 
         
-        //Timer Object Over here
-        if(this.#Qb != undefined && insideTheQuizFlag != false)
+        //Timer Object Over here and detecting if the page was Reloaded or not
+        if(Qb != undefined && insideTheQuizFlag != false)
         {     
         this.timerObj=new timerClass(timer);
         this.timerObj.timerCounter();
         }
 
+        // Handling Page Leaving over here
+        document.addEventListener("visibilitychange",this.handler);
       
     }
 
-    creatQuiz=()=> {
-        // Reload detection
+    //This is the main function that will create the Quiz's Each Question
 
-        if (this.#Qb != undefined && insideTheQuizFlag != false) {
-            cont.innerHTML = `<h1>Questions ${this.#count + 1} of ${this.#Qb.length}</h1>
+    creatQuiz=()=> {
+
+        //Filling up the Quiz with empty HTML
+        if (Qb != undefined && insideTheQuizFlag != false) {
+            cont.innerHTML = `<h1>Questions ${this.#count + 1} of ${Qb.length}</h1>
     <div class="quizQuestionsStatement"></div>
     <div class="options">
         <div class="quizOptionsDiv">
@@ -94,29 +101,38 @@ class Quiz {
     </div>`;
             }
 
-            // Adding the heading over here
+            // Adding the statemnt over here
             let qTemp = document.querySelector(".quizQuestionsStatement");
-            qTemp.textContent = this.#Qb[this.#count].statement;
+            qTemp.textContent = Qb[this.#count].statement;
 
+            //Adding Options over here
             let optTemp = document.querySelectorAll(".quizOptionsText");
 
             //Filling in the options
             for (let i = 0; i < optTemp.length; i++) {
-                optTemp[i].textContent = this.#Qb[this.#count].optArr[i];
+                optTemp[i].textContent = Qb[this.#count].optArr[i];
             }
-        } else {
+
+            
+        } 
+        //Else If the page was reloaded that local storage would be empty
+        // Displayin Page Reload Message
+
+        else {
             cont.classList.add("over");
             cont.innerHTML = `The Quiz is over because page was reloaded.`;
             next.style.display = "none";
             prev.style.display = "none";
-            delete this.timerObj.timerCounter();
         }
+      
+        // Getting the marked optins
+         this.getTheOtion();
 
-        this.getTheOtion();
     }
 
 
     //Next and prev Button function
+
     nextQuestion=() => {
         this.#count++;
         if (this.#count < Qb.length - 1) {
@@ -128,12 +144,13 @@ class Quiz {
             this.#count--;
             if (confirm("Do u want to sumbmit the quiz ?")) {
                 quizOver("Submitted");
+        // Calling the stop timer to submit the time taken to solve
+                this.timerObj.stop();
+               
             }
         } else {
             next.textContent = "Next";
         }
-
-        this.getTheOtion();
     };
     
     //Prev Button fucntion
@@ -147,13 +164,20 @@ class Quiz {
         else {
             this.#count++;
         }
-        this.getTheOtion();
+       
     };
     
+    //Adding event listners to the options and storing the marked options
     getTheOtion=()=>
     {
         let optTemp = document.querySelectorAll(".quizOptionsDiv");
         
+        // Already marked Options displayed here
+        if(Qb[this.#count].markedOption!=null)
+        {
+          optTemp[Qb[this.#count].markedOption].classList.add("marked");
+        }
+
       
         for (let i = 0; i < optTemp.length; i++) {
 
@@ -165,13 +189,13 @@ class Quiz {
                 // Updating our Data type Qb over here to get the marked option
                 if(optTemp[i].classList.contains("marked"))
                 {
-                    this.#Qb[this.#count].markedOption=i;
-                    console.log(this.#Qb);
+                    Qb[this.#count].markedOption=i;
+                   
                 }
                 else{
-                    this.#Qb[this.#count].markedOption=null;
-                    console.log(this.#Qb);;
+                    Qb[this.#count].markedOption=null;
                 }
+
             // Removing the marked CLass from here 
             for (let j = 0; j < optTemp.length; j++) 
             {
@@ -187,15 +211,22 @@ class Quiz {
 
     }
 
-    storingTheOption=(index)=>
+    //Handler for page leaving detection
+    handler=()=>
     {
-        
+        if(document.visibilityState==="hidden" && insideTheQuizFlag!=false)
+        {
+        quizOver("You left the App !");
+        this.timerObj.stop();
+
+        }
     }
-   
 }
 
+// Main Driver Code For Above Class
+
 // creating a new Quiz Over here 
-let newQuiz=new Quiz(Qb);
+let newQuiz=new Quiz();
 newQuiz.creatQuiz();
 
 

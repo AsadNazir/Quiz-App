@@ -1,0 +1,58 @@
+.Results
+{
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 8px 23px -7px grey;
+    min-height: 22rem;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center;  */
+    flex-direction: column;
+    padding: 2rem;
+    overflow: hidden;
+}
+.innerContainer >h1{
+    margin-bottom: 2rem;
+    color: var(--bColor);
+}
+h1
+{
+    text-align: center;
+    font-size: var(--fs2);
+}
+
+/* Marks Over Here */
+
+.marks
+{
+    /* border: 2px solid; */
+    font-size: var(--fs2);
+    display: flex;
+    justify-content: space-between;
+}
+.correct
+{
+    color: rgb(2, 122, 2);
+    font-weight: 700;
+}
+.wrong
+{
+    color: rgb(237, 0, 0);
+    font-weight: 700;
+}
+.unattempted
+{
+    color: var(--bColor);
+    font-weight: 700;
+}
+
+/* Timer in results */
+#time{
+font-size: var(--fs2);
+}
+
+.btnDiv
+{
+justify-content: center;
+}

@@ -26,7 +26,7 @@ body {
 
 :root {
     --fs1: clamp(2.2rem, 3.5vw, 4rem);
-    --fs2: clamp(1.5rem, 2vw, 3rem);
+    --fs2: clamp(1.5rem, 1.7vw, 3rem);
     --fs3: clamp(1.15rem, 1.5vw, 1.3rem);
     --fs4: clamp(1rem, 1.8vw, 4rem);
     --bColor: #000aca;

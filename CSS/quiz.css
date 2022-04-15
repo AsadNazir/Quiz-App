@@ -69,10 +69,19 @@ a {
 
 /* When the Quiz Form is Over Submmit  */
 
-.over {
+.over  {
     display: grid;
     place-content: center;
     font-size: var(--fs3);
+    text-align: center;
+}
+.over2  {
+    text-align: center;
+    font-size: var(--fs2);
+}
+
+.over2+.btn {
+   margin: 1.5rem auto 1.5rem auto;
 }
 
 /* Marked Options */

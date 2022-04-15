@@ -1,5 +1,8 @@
 import { noOfOptions, noOfOptions as opt, noOfQuestionsCount as noOfQ, questionFormValidation as qFv, quizHeadingValue as heading, timerCount } from "./inputValidation.js";
 
+//
+localStorage.clear();
+
 //Global scope
 let count = 0;
 let nextQ = document.getElementById("nextBtn");
@@ -58,10 +61,10 @@ function NewQuestion(statement, optArr, correctOpt) {
     this.statement = statement;
     this.optArr = optArr;
     this.correctOpt = correctOpt;
+    this.markedOption=null;
 }
 
-NewQuestion.prototype.markedOption=null;
-console.log(new NewQuestion("hi","hello","Something"));
+
 
 //  Next Q Function over here
 function nextQFunc() {
@@ -96,7 +99,7 @@ function nextQFunc() {
             cont.style.textAlign = 'center'
 
             // Adding a start Quiz Button over here
-            cont.innerHTML = `<span>Click to start the Quiz or reload to make another one."</span>
+            cont.innerHTML = `<span>The Quiz consists of ${noOfQ} question/s, each having ${noOfOptions} option/s. The Time limit is of ${timerCount} minute/s.<br>If the page is reloaded Quiz will be over.<br>If the you leave the tab the Quiz will be over.<br>Click to start</span>
             <div class="btnDiv">
             <button class="btn" id="submit"><a href="../quiz.html" target="_blank" >Start</a></button>
             <button class="btn" ><a href="../index.html" >Home</a></button>
@@ -155,7 +158,7 @@ function storingQuestionsInbank() {
 // Can be called in both Prev and Next btn
 
 function displayingQuestionBank() {
-    // console.log("count is inside case 2 : " + count);
+    
     let radio = document.querySelectorAll(`input[name="option"]`);
     let option = document.querySelectorAll(".optionsDiv textarea");
     let qStatement = document.querySelector(".qStatement");
